@@ -20,3 +20,4 @@ link to live application:
 https://maryjezek.github.io/Code_Quiz/
 
 
+![image](https://user-images.githubusercontent.com/37507020/145688843-3b33a71c-3ea7-4b25-9f38-af2690a9d257.png)
