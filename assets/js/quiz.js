@@ -1,12 +1,14 @@
 var quizContainer = document.getElementById("questions");
 var startButton = document.getElementById("start");
 var submitButton = document.getElementById("submit");
+var submitScores = document.getElementById("submitScores");
 var startPage = document.getElementById("start-page");
 var scoresPage = document.getElementById("scores-page");
 var scores = document.getElementById("score");
 scoresPage.style.display = "none";
+var timeleft = document.getElementById("count");
 
-var time = 30;
+
 
 var i = 0;
 
@@ -129,10 +131,10 @@ function checkAnswers(event, i) {
     console.log(i);
     iterateArr(i, event);
   } else {
-    time -= 15;
-    setCounterText();
-    console.log(time);
-    if (time === 0) {
+    timeleft -= 15;
+    startTimer();
+    console.log(timeleft);
+    if (timeleft === 0) {
       scoresPage.style.display = "block";
       return;
     }
@@ -142,35 +144,46 @@ function checkAnswers(event, i) {
   }
 }
 
-//time = setInterval(count, 1000);
+var timeleft = 10
+var gameTimer =100;
 
-function setCounterText() {
-  count.textContent = time;
+function startTimer() {
+  gameTimer = setInterval(tick, 1000);
+timeleft.textContent = gameTimer;
+};
+
+function tick() {
+  if (timeleft <= 0) {
+    clearInterval(gameTimer);
+    document.getElementById("#count").innerHTML = "Time's Up!";
+  } else {
+    document.getElementById("#count").innerHTML = timeleft;
+  }
+  timeleft -= 1;
 }
 
 startButton.onclick = function (event) {
   i = 0;
   trying(event, i);
   console.log("start");
-  setCounterText();
+  startTimer();
   return i;
 };
 
 //local Storage Code
 var initialsInput = document.querySelector("#initials");
 
+submitScores.addEventListener("click", function (event) {
+  event.preventDefault();
 
-submitButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    
-    // create user object from submission
-    var user = {
-      initials: initialsInput.value.trim(),
-      score: score,
-    };
-  
-    // set new submission to local storage 
-    localStorage.setItem("user", JSON.stringify(user));
-    
-  });
-  
+  // create user object from submission
+  var user = {
+    initials: initialsInput.value.trim(),
+    score: score,
+  };
+
+  // set new submission to local storage
+  localStorage.setItem("user", JSON.stringify(user));
+  loadUser();
+});
+
