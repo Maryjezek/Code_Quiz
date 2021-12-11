@@ -1,11 +1,22 @@
 # Code_Quiz
 
+## Description
 
-1) develop 5 questions
-2) basic set-up - get html CSS and JS linked- no styling all logic
-3) landing page 
-4) first question to appears and landing page disappears
-5) when I select the answer button then new question appears
-6) add the timer logic- what to do when hit zero
-7) use a tag to link to another page- storage to store high scores- get high scores from local storage and setting high scores
-8) score page will link back to the landing page
+This website landing page code was refactored to meet the Acceptance Criteria.
+### Acceptance criteria was the following:
+GIVEN I am taking a code quiz
+WHEN I click the start button
+THEN a timer starts and I am presented with a question
+WHEN I answer a question
+THEN I am presented with another question
+WHEN I answer a question incorrectly
+THEN time is subtracted from the clock
+WHEN all questions are answered or the timer reaches 0
+THEN the game is over
+WHEN the game is over
+THEN I can save my initials and score
+
+link to live application:
+https://maryjezek.github.io/Code_Quiz/
+
+
