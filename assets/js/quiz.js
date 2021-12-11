@@ -6,8 +6,9 @@ var startPage = document.getElementById("start-page");
 var scoresPage = document.getElementById("scores-page");
 var scores = document.getElementById("score");
 scoresPage.style.display = "none";
-var timeleft = document.getElementById("count");
-
+var timeLeftEl = document.getElementById("count");
+var timeleft = 100;
+var startTime =100;
 
 
 var i = 0;
@@ -144,20 +145,19 @@ function checkAnswers(event, i) {
   }
 }
 
-var timeleft = 10
-var gameTimer =100;
+
 
 function startTimer() {
   gameTimer = setInterval(tick, 1000);
-timeleft.textContent = gameTimer;
+  timeLeftEl.textContent = startTime;
 };
 
 function tick() {
   if (timeleft <= 0) {
     clearInterval(gameTimer);
-    document.getElementById("#count").innerHTML = "Time's Up!";
+    timeLeftEl.innerHTML = "Time's Up!";
   } else {
-    document.getElementById("#count").innerHTML = timeleft;
+    timeLeftEl.innerHTML = timeleft;
   }
   timeleft -= 1;
 }
